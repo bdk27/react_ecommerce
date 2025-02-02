@@ -3,3 +3,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* 讓整個 HTML / Body 預設字體就是 sans (對應 Noto Sans TC) */
+  html {
+    font-family: theme("fontFamily.sans");
+  }
+
+  /* 讓整個 Body 預設文字顏色就是我們的 black(#2D2D2D) */
+  body {
+    color: theme("colors.black");
+  }
+}
