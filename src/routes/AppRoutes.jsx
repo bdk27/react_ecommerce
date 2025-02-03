@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "@/components/Navbar";
+import MainLayout from "@/layouts/MainLayout.jsx";
 
 import Home from "@/pages/Home.jsx";
 import Category from "@/pages/Category.jsx";
@@ -19,7 +19,7 @@ import Casual from "@/pages/Bottoms/Casual.jsx";
 function AppRoutes() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <MainLayout />
 
       <Routes>
         {/* 主頁 */}
