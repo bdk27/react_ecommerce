@@ -2,8 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout.jsx";
 
 import Home from "@/pages/Home.jsx";
-import Category from "@/pages/Category.jsx";
-
 import TShirts from "@/pages/Tops/TShirts.jsx";
 import Hoodies from "@/pages/Tops/Hoodies.jsx";
 import Polos from "@/pages/Tops/Polos.jsx";
@@ -19,14 +17,13 @@ import Casual from "@/pages/Bottoms/Casual.jsx";
 function AppRoutes() {
   return (
     <BrowserRouter>
-      <MainLayout />
-
       <Routes>
-        {/* 主頁 */}
-        <Route path="/" element={<Home />} />
+        {/* 父路由：MainLayout */}
+        <Route path="/" element={<MainLayout />}>
+          {/* 子路由：對應 / */}
+          <Route index element={<Home />} />
 
-        <Route path="/category" element={<Category />}>
-          <Route index element={<Navigate to="/" replace />} />
+          {/* 子路由：對應 /t-shirts 等 */}
           <Route path="t-shirts" element={<TShirts />} />
           <Route path="hoodies" element={<Hoodies />} />
           <Route path="polos" element={<Polos />} />
@@ -37,10 +34,10 @@ function AppRoutes() {
           <Route path="suits" element={<Suits />} />
           <Route path="casual" element={<Casual />} />
           <Route path="shirts" element={<Shirts />} />
-        </Route>
 
-        {/* 錯誤路由重新導向Home */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+          {/* 錯誤路由：重新導向回 / */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
