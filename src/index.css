@@ -13,5 +13,6 @@
   /* 讓整個 Body 預設文字顏色就是我們的 black(#2D2D2D) */
   body {
     color: theme("colors.black");
+    @apply bg-grey-light;
   }
 }
