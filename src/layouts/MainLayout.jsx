@@ -1,5 +1,5 @@
+import { Outlet } from "react-router-dom";
 import Navbar from "@/components/Navbar.jsx";
-import Banner from "@/components/Banner.jsx";
 import Products from "@/components/Products.jsx";
 
 function MainLayout() {
@@ -12,12 +12,7 @@ function MainLayout() {
             <Products />
           </div>
           <div className="w-3/4">
-            <p className="bg-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-              laboriosam autem, dicta voluptatem assumenda excepturi? Commodi
-              dolor cum distinctio voluptatem eligendi! Nobis, numquam? Culpa
-              vitae deleniti atque. Aliquid, voluptate aut?
-            </p>
+            <Outlet />
           </div>
         </div>
       </div>
