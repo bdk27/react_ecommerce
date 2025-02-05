@@ -7,11 +7,12 @@ function MainLayout() {
     <>
       <Navbar />
       <div className="container mx-auto">
-        <div className="flex items-start justify-between mt-10">
-          <div className="w-1/4">
+        {/* 電腦版 */}
+        <div className="items-start justify-between mt-10 md:flex">
+          <div className="hidden lg:block lg:w-1/4">
             <Products />
           </div>
-          <div className="w-3/4">
+          <div className="w-full lg:w-3/4">
             <Outlet />
           </div>
         </div>

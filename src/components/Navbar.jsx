@@ -29,8 +29,8 @@ function Navbar() {
 
   return (
     <>
-      <div className="flex items-center justify-between w-full px-5 py-3 shadow md:gap-5 md:justify-center">
-        <div className="flex items-center justify-center gap-3 md:hidden">
+      <div className="flex items-center justify-between w-full px-5 py-3 bg-white shadow lg:gap-5 lg:justify-center">
+        <div className="flex items-center justify-center gap-3 lg:hidden">
           <FontAwesomeIcon
             icon={openSubList ? faXmark : faBars}
             className="fa-lg"
@@ -39,18 +39,21 @@ function Navbar() {
           <h1 className="text-2xl font-bold font-playfair">AVELA</h1>
         </div>
 
-        <h1 className="hidden text-3xl font-bold font-playfair md:block">
+        <h1 className="hidden text-3xl font-bold font-playfair lg:block">
           AVELA
         </h1>
 
         <ul className="flex items-center justify-center gap-5">
           <li>
-            <FontAwesomeIcon icon={faUser} className="text-grey-dark fa-lg" />
+            <FontAwesomeIcon
+              icon={faUser}
+              className="cursor-pointer text-grey-dark fa-lg hover:text-black"
+            />
           </li>
           <li>
             <FontAwesomeIcon
               icon={faCartShopping}
-              className="text-grey-dark fa-lg"
+              className="cursor-pointer text-grey-dark fa-lg hover:text-black"
             />
           </li>
         </ul>
