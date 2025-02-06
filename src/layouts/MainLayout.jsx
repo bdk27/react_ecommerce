@@ -8,7 +8,7 @@ function MainLayout() {
       <Navbar />
       <div className="container mx-auto">
         {/* 電腦版 */}
-        <div className="items-start justify-between mt-10 md:flex">
+        <div className="items-start justify-between gap-3 mt-10 md:flex">
           <div className="hidden lg:block lg:w-1/4">
             <Products />
           </div>
