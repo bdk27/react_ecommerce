@@ -22,7 +22,7 @@ function Cards({ category }) {
             </div>
 
             <div>
-              <h3 className="text-sm font-bold">{product.name}</h3>
+              <h3 className="py-1 text-sm font-bold">{product.name}</h3>
               <p className="text-sm">NT$ {product.price}</p>
             </div>
           </div>
