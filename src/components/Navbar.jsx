@@ -26,6 +26,9 @@ function Navbar() {
     navigate(link);
     setOpenSubList(false);
   }
+  function handleNavigation(path) {
+    navigate(path);
+  }
 
   return (
     <>
@@ -36,10 +39,18 @@ function Navbar() {
             className="fa-lg"
             onClick={() => setOpenSubList(!openSubList)}
           />
-          <h1 className="text-2xl font-bold font-playfair">AVELA</h1>
+          <h1
+            className="text-2xl font-bold cursor-pointer font-playfair"
+            onClick={() => handleNavigation("/")}
+          >
+            AVELA
+          </h1>
         </div>
 
-        <h1 className="hidden text-3xl font-bold font-playfair lg:block">
+        <h1
+          className="hidden text-3xl font-bold cursor-pointer font-playfair lg:block"
+          onClick={() => handleNavigation("/")}
+        >
           AVELA
         </h1>
 

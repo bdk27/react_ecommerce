@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 function Modal({ product, onClose }) {
   const [selectedImage, setSelectedImage] = useState(product.images[0]);
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
 
   function handleImageClick(image) {
     setSelectedImage(image);
@@ -13,8 +15,9 @@ function Modal({ product, onClose }) {
     const value = Math.max(1, parseInt(e.target.value, 10));
     setQuantity(value);
   }
-  function addCart() {
-    console.log("addCart");
+  function handleAddToCart() {
+    navigate("/checkout", { product, quantity });
+    onClose();
   }
 
   return (
@@ -69,7 +72,7 @@ function Modal({ product, onClose }) {
               min="1"
             />
             <button
-              onClick={() => addCart()}
+              onClick={handleAddToCart}
               className="w-full p-2 mt-3 text-white bg-black rounded hover:bg-gray-800"
             >
               加入購物車
