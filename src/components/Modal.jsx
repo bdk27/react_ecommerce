@@ -25,13 +25,16 @@ function Modal({ product, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="relative w-full max-w-3xl p-5 bg-white rounded shadow-lg">
         <button
-          className="absolute top-0 right-0 flex items-center justify-center w-10 h-10 mt-2 mr-2 bg-black rounded-full hover:bg-red-500"
+          className="absolute flex items-center justify-center mt-2 mr-2 bg-black rounded-full -right-2 -top-2 md:top-0 md:right-0 w-7 h-7 lg:w-10 lg:h-10 hover:bg-red-500"
           onClick={onClose}
         >
-          <FontAwesomeIcon icon={faXmark} className="text-lg text-white" />
+          <FontAwesomeIcon
+            icon={faXmark}
+            className="text-sm text-white md:text-md lg:text-lg"
+          />
         </button>
 
         <div className="flex items-start justify-between gap-5">
@@ -40,44 +43,50 @@ function Modal({ product, onClose }) {
               <img src={selectedImage} alt={product.name} />
             </div>
 
-            <div className="flex items-center justify-between mt-4">
+            <div className="flex flex-wrap items-center justify-between mt-4">
               {product.images.map((image, index) => (
                 <img
                   key={index}
                   src={image}
                   alt={product.name}
-                  className="object-cover w-16 h-16 rounded cursor-pointer"
+                  className="object-cover w-12 h-12 rounded cursor-pointer md:w-14 md:h-14 lg:w-16 lg:h-16"
                   onClick={() => handleImageClick(image)}
                 />
               ))}
             </div>
           </div>
           <div className="flex-1">
-            <h1 className="mb-2 text-2xl font-bold">{product.name}</h1>
-            <p className="mb-2 text-2xl font-bold text-grey-dark">
+            <h1 className="mb-2 text-lg font-bold md:text-xl lg:text-2xl">
+              {product.name}
+            </h1>
+            <p className="mb-2 text-lg font-bold md:text-xl lg:text-2xl text-grey-dark">
               NT$ {product.price}
             </p>
             <hr />
-            <p className="my-4 text-sm text-grey-dark">{product.color}</p>
-            <p>
+            <p className="my-4 text-xs md:text-sm text-grey-dark">
+              {product.color}
+            </p>
+            <p className="text-sm md:text-base">
               {product.description.map((line, index) => (
                 <span key={index} className="block">
                   {line}
                 </span>
               ))}
             </p>
-            <p className="my-4 text-sm text-grey-dark">{product.content}</p>
+            <p className="my-4 text-xs md:text-sm text-grey-dark">
+              {product.content}
+            </p>
 
             <input
               type="number"
               value={quantity}
               onChange={handleQuantityChange}
-              className="border w-[100px] p-1"
+              className="border w-[50px] md:w-[100px] p-1"
               min="1"
             />
             <button
               onClick={handleAddToCart}
-              className="w-full p-2 mt-3 text-white bg-black rounded hover:bg-gray-800"
+              className="w-full p-2 mt-3 text-sm text-white bg-black rounded md:text-base hover:bg-gray-800"
             >
               加入購物車
             </button>
