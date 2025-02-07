@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar.jsx";
 import Products from "@/components/Products.jsx";
+import Footer from "@/components/Footer";
 
 function MainLayout() {
   const location = useLocation();
@@ -21,6 +22,7 @@ function MainLayout() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
