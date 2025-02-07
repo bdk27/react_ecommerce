@@ -13,6 +13,7 @@ function Navbar() {
   const [openSubList, setOpenSubList] = useState(false);
   const navigate = useNavigate();
   const categories = useSelector((state) => state.category.categories);
+  const cartItems = useSelector((state) => state.cart.items);
 
   useEffect(() => {
     if (openSubList) {
@@ -61,11 +62,15 @@ function Navbar() {
               className="cursor-pointer text-grey-dark fa-lg hover:text-black"
             />
           </li>
-          <li>
+          <li className="relative">
             <FontAwesomeIcon
               icon={faCartShopping}
               className="cursor-pointer text-grey-dark fa-lg hover:text-black"
+              onClick={() => handleNavigation("/cart")}
             />
+            {cartItems.length > 0 && (
+              <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
+            )}
           </li>
         </ul>
       </div>
