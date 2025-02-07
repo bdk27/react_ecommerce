@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout.jsx";
+import Checkout from "@/pages/Checkout.jsx";
 
-import Home from "@/pages/Home.jsx";
 import TShirts from "@/pages/Tops/TShirts.jsx";
 import Hoodies from "@/pages/Tops/Hoodies.jsx";
 import Polos from "@/pages/Tops/Polos.jsx";
@@ -21,7 +21,7 @@ function AppRoutes() {
         {/* 父路由：MainLayout */}
         <Route path="/" element={<MainLayout />}>
           {/* 子路由：對應 / */}
-          <Route index element={<Home />} />
+          <Route index element={<Navigate to="/t-shirts" replace />} />
 
           {/* 子路由：對應 /t-shirts 等 */}
           <Route path="t-shirts" element={<TShirts />} />
@@ -34,9 +34,10 @@ function AppRoutes() {
           <Route path="suits" element={<Suits />} />
           <Route path="casual" element={<Casual />} />
           <Route path="shirts" element={<Shirts />} />
-
+          {/* 新增結帳頁面的路由 */}
+          <Route path="checkout" element={<Checkout />} />
           {/* 錯誤路由：重新導向回 / */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/t-shirts" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>
