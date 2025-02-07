@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { addItemToCart } from "@/data/cartSlice.js";
 
 function Modal({ product, onClose }) {
   const [selectedImage, setSelectedImage] = useState(product.images[0]);
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function handleImageClick(image) {
     setSelectedImage(image);
@@ -16,6 +19,7 @@ function Modal({ product, onClose }) {
     setQuantity(value);
   }
   function handleAddToCart() {
+    dispatch(addItemToCart({ ...product, quantity }));
     navigate("/cart", { state: { product, quantity } });
     onClose();
   }
