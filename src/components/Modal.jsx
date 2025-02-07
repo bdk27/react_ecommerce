@@ -16,7 +16,7 @@ function Modal({ product, onClose }) {
     setQuantity(value);
   }
   function handleAddToCart() {
-    navigate("/checkout", { product, quantity });
+    navigate("/cart", { state: { product, quantity } });
     onClose();
   }
 

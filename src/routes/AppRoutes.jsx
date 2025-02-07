@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout.jsx";
-import Checkout from "@/pages/Checkout.jsx";
+import Cart from "@/pages/Cart.jsx";
 
 import TShirts from "@/pages/Tops/TShirts.jsx";
 import Hoodies from "@/pages/Tops/Hoodies.jsx";
@@ -35,7 +35,7 @@ function AppRoutes() {
           <Route path="casual" element={<Casual />} />
           <Route path="shirts" element={<Shirts />} />
           {/* 新增結帳頁面的路由 */}
-          <Route path="checkout" element={<Checkout />} />
+          <Route path="cart" element={<Cart />} />
           {/* 錯誤路由：重新導向回 / */}
           <Route path="*" element={<Navigate to="/t-shirts" replace />} />
         </Route>
