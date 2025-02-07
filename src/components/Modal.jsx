@@ -21,13 +21,10 @@ function Modal({ product, onClose }) {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="relative w-full max-w-3xl p-5 bg-white rounded shadow-lg">
         <button
-          className="absolute top-0 right-0 mt-2 mr-2 text-gray-600"
+          className="absolute top-0 right-0 flex items-center justify-center w-10 h-10 mt-2 mr-2 bg-black rounded-full hover:bg-red-500"
           onClick={onClose}
         >
-          <FontAwesomeIcon
-            icon={faXmark}
-            className="p-3 text-white bg-black rounded-full fa-lg hover:bg-red-500"
-          />
+          <FontAwesomeIcon icon={faXmark} className="text-lg text-white" />
         </button>
 
         <div className="flex items-start justify-between gap-5">

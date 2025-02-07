@@ -22,8 +22,12 @@ const initialState = {
         name: "飄逸針織 T 恤",
         price: 1190,
         images: getImages("t-shirts", "tshirts1"),
-        description:
-          "模特兒身高：192 cm | 尺碼：L<br>Regular fit 標準版針織 T 恤；採用短纖人造絲混紡製成；圓領短袖；羅紋邊飾。",
+        color: "黑色 | 0304/406/800",
+        description: [
+          "模特兒身高：192 cm | 尺碼：L",
+          "Regular fit 標準版針織 T 恤；採用短纖人造絲混紡製成；圓領短袖；羅紋邊飾。",
+        ],
+        content: "材質和保養: 82% 嫘縈, 18% 聚醯胺纖維",
       },
       {
         id: uuidv4(),
@@ -42,15 +46,21 @@ const initialState = {
         name: "HEAVY WEIGHT 基本款 T 恤",
         price: 790,
         images: getImages("t-shirts", "tshirts3"),
-        description: "Relaxed fit 休閒版 T 恤；採用精梳棉製成；圓領短袖。",
+        color: "黑色 | 1887/455/800",
+        description: ["Relaxed fit 休閒版 T 恤；採用精梳棉製成；圓領短袖。"],
+        content: "材質和保養: 100% 棉",
       },
       {
         id: uuidv4(),
         name: "重磅短袖 T 恤",
         price: 990,
         images: getImages("t-shirts", "tshirts4"),
-        description:
-          "標準版 T 恤；採用精梳棉製成；圓領；短袖。<br>Origins 特別系列。",
+        color: "黑色 | 0761/323/800",
+        description: [
+          "標準版 T 恤；採用精梳棉製成；圓領；短袖。",
+          "Origins 特別系列。",
+        ],
+        content: "材質和保養: 100% 棉",
       },
     ],
   },
