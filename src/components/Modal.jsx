@@ -95,7 +95,7 @@ function Modal({ product, onClose }) {
             />
             <button
               onClick={handleAddToCart}
-              className="w-full p-2 mt-3 text-sm text-white bg-black rounded md:text-base hover:bg-gray-800"
+              className="w-full p-2 mt-3 text-sm text-white transition duration-300 ease-in-out transform bg-black border border-black rounded md:text-base hover:bg-transparent hover:border hover:border-black hover:text-black"
             >
               加入購物車
             </button>

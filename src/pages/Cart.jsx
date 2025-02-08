@@ -76,6 +76,11 @@ function Cart() {
           </div>
         ))}
       </div>
+      <div className="mt-5 text-right">
+        <button className="px-5 py-2 text-white transition duration-300 ease-in-out transform bg-black border border-black rounded hover:bg-transparent hover:border hover:border-black hover:text-black">
+          前往付款
+        </button>
+      </div>
     </>
   );
 }
