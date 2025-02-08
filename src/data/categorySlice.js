@@ -5,47 +5,47 @@ const initialState = {
     {
       id: "TShirts",
       name: "T恤",
-      link: "/t-shirts",
+      link: "/products/t-shirts",
     },
     {
       id: "Polos",
       name: "POLO 衫",
-      link: "/polos",
+      link: "/products/polos",
     },
     {
       id: "Jackets",
       name: "外套夾克",
-      link: "/jackets",
+      link: "/products/jackets",
     },
     {
       id: "Knitwear",
       name: "針織衫/毛衣",
-      link: "/knitwear",
+      link: "/products/knitwear",
     },
     {
       id: "Shirts",
       name: "襯衫",
-      link: "/shirts",
+      link: "/products/shirts",
     },
     {
       id: "Shorts",
       name: "短褲",
-      link: "/shorts",
+      link: "/products/shorts",
     },
     {
       id: "Jeans",
       name: "牛仔褲",
-      link: "/jeans",
+      link: "/products/jeans",
     },
     {
       id: "Casual",
       name: "休閒褲",
-      link: "/casual",
+      link: "/products/casual",
     },
     {
       id: "Suits",
       name: "西裝套裝",
-      link: "/suits",
+      link: "/products/suits",
     },
   ],
 };

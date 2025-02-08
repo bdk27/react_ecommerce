@@ -21,19 +21,19 @@ function AppRoutes() {
         {/* 父路由：MainLayout */}
         <Route path="/" element={<MainLayout />}>
           {/* 子路由：對應 / */}
-          <Route index element={<Navigate to="/t-shirts" replace />} />
+          <Route index element={<Navigate to="/products/t-shirts" replace />} />
 
           {/* 子路由：對應 /t-shirts 等 */}
-          <Route path="t-shirts" element={<TShirts />} />
-          <Route path="hoodies" element={<Hoodies />} />
-          <Route path="polos" element={<Polos />} />
-          <Route path="jackets" element={<Jackets />} />
-          <Route path="knitwear" element={<Knitwear />} />
-          <Route path="shorts" element={<Shorts />} />
-          <Route path="jeans" element={<Jeans />} />
-          <Route path="suits" element={<Suits />} />
-          <Route path="casual" element={<Casual />} />
-          <Route path="shirts" element={<Shirts />} />
+          <Route path="products/t-shirts" element={<TShirts />} />
+          <Route path="products/hoodies" element={<Hoodies />} />
+          <Route path="products/polos" element={<Polos />} />
+          <Route path="products/jackets" element={<Jackets />} />
+          <Route path="products/knitwear" element={<Knitwear />} />
+          <Route path="products/shorts" element={<Shorts />} />
+          <Route path="products/jeans" element={<Jeans />} />
+          <Route path="products/suits" element={<Suits />} />
+          <Route path="products/casual" element={<Casual />} />
+          <Route path="products/shirts" element={<Shirts />} />
           {/* 新增結帳頁面的路由 */}
           <Route path="cart" element={<Cart />} />
           {/* 錯誤路由：重新導向回 / */}
