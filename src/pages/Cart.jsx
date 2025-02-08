@@ -38,6 +38,15 @@ function Cart() {
     setisModalOpen(false);
   }
 
+  function handleCheckout() {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn === "true") {
+      setisModalOpen(true);
+    } else {
+      navigate("/login");
+    }
+  }
+
   if (cartItems.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-full gap-3 lg:gap-5">
@@ -95,26 +104,28 @@ function Cart() {
           </div>
         ))}
       </div>
-      <div className="flex items-center justify-between my-5">
-        <div>
+      <div className="md:flex md:items-center md:justify-between">
+        <div className="flex flex-wrap items-center justify-around md:flex-col md:items-start">
           <h2 className="text-lg font-bold md:text-xl lg:text-2xl ">
             總計: <span className="text-red-500">NT$ {totalAmount}</span>
           </h2>
-          <div className="flex items-center justify-center">
-            <p className="text-grey-dark">我們支持接受以下付款方式:</p>
+          <div className="flex items-center md:flex-wrap">
+            <p className="text-sm text-grey-dark md:text-base">
+              我們支持接受以下付款方式:
+            </p>
             <ul className="flex items-center justify-center">
               {brandIcons.map((icon, index) => (
                 <li key={index} className="ml-3">
                   <FontAwesomeIcon
                     icon={icon}
-                    className="text-grey-dark fa-xl"
+                    className="fa-xl text-grey-dark"
                   />
                 </li>
               ))}
             </ul>
           </div>
         </div>
-        <div>
+        <div className="mt-5 text-center">
           <button
             className="px-5 py-2 mr-3 text-sm border border-black rounded md:text-base"
             onClick={() => handleNavigation("/")}
@@ -122,7 +133,7 @@ function Cart() {
             繼續購物
           </button>
           <button
-            onClick={() => setisModalOpen(true)}
+            onClick={handleCheckout}
             className="px-5 py-2 text-sm text-white transition duration-300 ease-in-out transform bg-black border border-black rounded md:text-base hover:bg-transparent hover:border hover:border-black hover:text-black"
           >
             前往付款
