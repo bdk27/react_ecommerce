@@ -1,14 +1,29 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faFaceTired } from "@fortawesome/free-regular-svg-icons";
+import {
+  faCcVisa,
+  faCcMastercard,
+  faPaypal,
+  faCcJcb,
+} from "@fortawesome/free-brands-svg-icons";
 import { removeItemFromCart } from "@/data/cartSlice.js";
+import PayPalModal from "@/components/PayPalModal";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isModalOpen, setisModalOpen] = useState(false);
+
+  const totalAmount = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const brandIcons = [faCcVisa, faCcMastercard, faCcJcb, faPaypal];
 
   function handleRemoveItem(id) {
     const confirmed = window.confirm("確定要刪除此商品嗎?");
@@ -17,6 +32,10 @@ function Cart() {
 
   function handleNavigation(path) {
     navigate(path);
+  }
+
+  function handleCloseModal() {
+    setisModalOpen(false);
   }
 
   if (cartItems.length === 0) {
@@ -76,17 +95,44 @@ function Cart() {
           </div>
         ))}
       </div>
-      <div className="my-5 text-right">
-        <button
-          className="px-5 py-2 mr-3 border border-black rounded"
-          onClick={() => handleNavigation("/")}
-        >
-          繼續購物
-        </button>
-        <button className="px-5 py-2 text-white transition duration-300 ease-in-out transform bg-black border border-black rounded hover:bg-transparent hover:border hover:border-black hover:text-black">
-          前往付款
-        </button>
+      <div className="flex items-center justify-between my-5">
+        <div>
+          <h2 className="text-lg font-bold md:text-xl lg:text-2xl ">
+            總計: <span className="text-red-500">NT$ {totalAmount}</span>
+          </h2>
+          <div className="flex items-center justify-center">
+            <p className="text-grey-dark">我們支持接受以下付款方式:</p>
+            <ul className="flex items-center justify-center">
+              {brandIcons.map((icon, index) => (
+                <li key={index} className="ml-3">
+                  <FontAwesomeIcon
+                    icon={icon}
+                    className="text-grey-dark fa-xl"
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div>
+          <button
+            className="px-5 py-2 mr-3 text-sm border border-black rounded md:text-base"
+            onClick={() => handleNavigation("/")}
+          >
+            繼續購物
+          </button>
+          <button
+            onClick={() => setisModalOpen(true)}
+            className="px-5 py-2 text-sm text-white transition duration-300 ease-in-out transform bg-black border border-black rounded md:text-base hover:bg-transparent hover:border hover:border-black hover:text-black"
+          >
+            前往付款
+          </button>
+        </div>
       </div>
+
+      {isModalOpen && (
+        <PayPalModal totalAmount={totalAmount} onClose={handleCloseModal} />
+      )}
     </>
   );
 }
