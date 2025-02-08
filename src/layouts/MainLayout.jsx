@@ -8,7 +8,7 @@ function MainLayout() {
   const isCartPage = location.pathname === "/cart";
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       <div className="container mx-auto">
         <div className="items-start justify-between gap-5 mt-10 md:flex">
@@ -23,7 +23,7 @@ function MainLayout() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -76,7 +76,13 @@ function Cart() {
           </div>
         ))}
       </div>
-      <div className="mt-5 text-right">
+      <div className="my-5 text-right">
+        <button
+          className="px-5 py-2 mr-3 border border-black rounded"
+          onClick={() => handleNavigation("/")}
+        >
+          繼續購物
+        </button>
         <button className="px-5 py-2 text-white transition duration-300 ease-in-out transform bg-black border border-black rounded hover:bg-transparent hover:border hover:border-black hover:text-black">
           前往付款
         </button>
