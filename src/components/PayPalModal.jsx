@@ -1,8 +1,12 @@
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { clearCart } from "@/data/cartSlice.js";
 
 function PayPalModal({ totalAmount, onClose }) {
+  const dispatch = useDispatch();
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
       <div className="relative w-full max-w-3xl p-5 bg-white rounded shadow-lg">
@@ -37,17 +41,20 @@ function PayPalModal({ totalAmount, onClose }) {
             onApprove={async (data, actions) => {
               // 2) 付款完成後
               const order = await actions.order.capture();
-              console.log("訂單資料:", order);
               alert(`交易完成！交易編號：${order.id}`);
+              dispatch(clearCart());
+              onClose();
             }}
             onCancel={() => {
               // 用戶在中途取消交易
               alert("交易已取消");
+              onClose();
             }}
             onError={(err) => {
               // 交易或系統發生錯誤
               console.error("PayPal Checkout Error:", err);
               alert("付款過程中發生錯誤");
+              onClose();
             }}
           />
         </div>
