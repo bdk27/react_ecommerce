@@ -56,10 +56,11 @@ function Navbar() {
         </h1>
 
         <ul className="flex items-center justify-center gap-5">
-          <li>
+          <li className="relative">
             <FontAwesomeIcon
               icon={faUser}
-              className="cursor-pointer text-grey-dark fa-lg hover:text-black"
+              className="cursor-pointer fa-lg text-grey-dark hover:text-black"
+              onClick={() => handleNavigation("/login")}
             />
           </li>
           <li className="relative">

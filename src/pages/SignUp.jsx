@@ -30,7 +30,7 @@ function SignUp() {
 
     localStorage.setItem("username", encryptedUsername);
     localStorage.setItem("password", encryptedPassword);
-    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("isLoggedIn", "false");
     navigate("/login");
   }
 
