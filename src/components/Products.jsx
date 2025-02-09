@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Products() {
   const categories = useSelector((state) => state.category.categories);
   const [selectedCategory, setSelectedCategory] = useState("TShirts");
+  const location = useLocation();
 
-  function handleClick(id) {
-    setSelectedCategory(id);
-  }
+  useEffect(() => {
+    const found = categories.find((item) =>
+      location.pathname.includes(item.link)
+    );
+    if (found) {
+      setSelectedCategory(found.id);
+    }
+  }, [location.pathname, categories]);
 
   return (
     <div className="hidden bg-white md:block">
@@ -22,7 +28,6 @@ function Products() {
                 ? "bg-grey-light"
                 : "hover:bg-grey-light"
             }`}
-            onClick={() => handleClick(item.id)}
           >
             <Link to={item.link} className="block w-full h-full">
               {item.name}
