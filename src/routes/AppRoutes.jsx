@@ -5,7 +5,6 @@ import Login from "@/pages/Login.jsx";
 import SignUp from "@/pages/SignUp.jsx";
 
 import TShirts from "@/pages/Tops/TShirts.jsx";
-import Hoodies from "@/pages/Tops/Hoodies.jsx";
 import Polos from "@/pages/Tops/Polos.jsx";
 import Jackets from "@/pages/Tops/Jackets.jsx";
 import Knitwear from "@/pages/Tops/Knitwear.jsx";
