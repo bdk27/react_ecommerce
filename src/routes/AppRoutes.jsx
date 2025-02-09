@@ -41,7 +41,10 @@ function AppRoutes() {
           {/* 新增註冊頁面的路由 */}
           <Route path="signup" element={<SignUp />} />
           {/* 錯誤路由：重新導向回 / */}
-          <Route path="*" element={<Navigate to="/t-shirts" replace />} />
+          <Route
+            path="*"
+            element={<Navigate to="/products/t-shirts" replace />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
