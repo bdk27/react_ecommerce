@@ -44,7 +44,7 @@ const initialState = {
     },
     {
       id: "Suits",
-      name: "西裝套裝",
+      name: "西裝外套",
       link: "/products/suits",
     },
   ],

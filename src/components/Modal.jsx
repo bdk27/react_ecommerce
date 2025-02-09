@@ -43,7 +43,6 @@ function Modal({ product, onClose }) {
       return;
     }
     dispatch(addItemToCart({ ...product, quantity }));
-    navigate("/cart", { state: { product, quantity } });
     onClose();
   }
 
