@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { addItemToCart } from "@/data/cartSlice.js";
+import useCachedUserData from "@/hooks/useCachedUserData";
 
 function Modal({ product, onClose }) {
   const [selectedImage, setSelectedImage] = useState(product.images[0]);
@@ -12,6 +13,14 @@ function Modal({ product, onClose }) {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const {
+    data: reviews,
+    loading,
+    error,
+  } = useCachedUserData(
+    `https://randomuser.me/api/?results=5&seed=${product.id}`
+  );
 
   function handleImageClick(image) {
     setSelectedImage(image);
@@ -93,6 +102,27 @@ function Modal({ product, onClose }) {
               className="border w-[50px] md:w-[100px] p-1"
               min="1"
             />
+            <div className="flex items-center justify-center">
+              {loading && <p>Loading reviews...</p>}
+              {error && <p>Error loading reviews</p>}
+              {reviews &&
+                reviews.results.map((review, index) => (
+                  <div key={index}>
+                    <div className="w-10 h-10 overflow-hidden rounded-full">
+                      <img
+                        src={review.picture.thumbnail}
+                        alt={`${review.name.first} ${review.name.last}`}
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold">
+                        {review.name.first} {review.name.last}
+                      </p>
+                      <p className="text-sm">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                  </div>
+                ))}
+            </div>
             <button
               onClick={handleAddToCart}
               className="w-full p-2 mt-3 text-sm text-white transition duration-300 ease-in-out transform bg-black border border-black rounded md:text-base hover:bg-transparent hover:border hover:border-black hover:text-black"
