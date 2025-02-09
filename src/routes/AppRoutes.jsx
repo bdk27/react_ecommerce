@@ -27,7 +27,6 @@ function AppRoutes() {
 
           {/* 子路由：對應 /t-shirts 等 */}
           <Route path="products/t-shirts" element={<TShirts />} />
-          <Route path="products/hoodies" element={<Hoodies />} />
           <Route path="products/polos" element={<Polos />} />
           <Route path="products/jackets" element={<Jackets />} />
           <Route path="products/knitwear" element={<Knitwear />} />
