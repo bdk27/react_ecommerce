@@ -37,7 +37,7 @@ function Navbar() {
         <div className="flex items-center justify-center gap-3 lg:hidden">
           <FontAwesomeIcon
             icon={openSubList ? faXmark : faBars}
-            className="fa-lg"
+            className="cursor-pointer fa-lg"
             onClick={() => setOpenSubList(!openSubList)}
           />
           <h1
