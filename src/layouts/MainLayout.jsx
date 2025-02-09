@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 function MainLayout() {
   const location = useLocation();
-  const isCartPage = ["/cart", "/login"].includes(location.pathname);
+  const isCartPage = ["/cart", "/login", "/signup"].includes(location.pathname);
 
   return (
     <div className="flex flex-col min-h-screen">
