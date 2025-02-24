@@ -17,7 +17,7 @@ import Casual from "@/pages/Bottoms/Casual.jsx";
 
 function AppRoutes() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/react_ecommerce">
       <Routes>
         {/* 父路由：MainLayout */}
         <Route path="/" element={<MainLayout />}>
