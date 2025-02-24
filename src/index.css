@@ -15,4 +15,37 @@
     color: theme("colors.black");
     @apply bg-grey-light;
   }
+
+  .dark body {
+    color: theme("colors.white");
+    @apply bg-dark-mode-grey-200;
+  }
+
+  .dark .text-white {
+    color: theme("colors.dark-mode-grey.300") !important;
+  }
+
+  .dark .bg-white {
+    background-color: theme("colors.dark-mode-grey.300") !important;
+  }
+
+  .dark .bg-black {
+    background-color: theme("colors.grey.light") !important;
+  }
+
+  .dark .bg-grey-light {
+    background-color: theme("colors.dark-mode-grey.200") !important;
+  }
+
+  .dark .border-b {
+    border-color: theme("colors.dark-mode-grey.100") !important;
+  }
+
+  .dark .border-t {
+    border-color: theme("colors.dark-mode-grey.100") !important;
+  }
+
+  .dark .border-black {
+    border-color: theme("colors.grey.light") !important;
+  }
 }

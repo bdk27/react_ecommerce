@@ -25,8 +25,8 @@ function Products() {
             key={item.id}
             className={`p-2 border-b cursor-pointer ${
               selectedCategory === item.id
-                ? "bg-grey-light"
-                : "hover:bg-grey-light"
+                ? "bg-grey-light dark:bg-dark-mode-grey-200"
+                : "hover:bg-grey-light dark:hover:bg-dark-mode-grey-200"
             }`}
           >
             <Link to={item.link} className="block w-full h-full">

@@ -8,10 +8,10 @@ function PayPalModal({ totalAmount, onClose }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-opacity-50 bg-grey-dark">
       <div className="relative w-full max-w-3xl p-5 bg-white rounded shadow-lg">
         <button
-          className="absolute mt-2 mr-2 bg-black rounded-full -right-2 -top-2 md:top-0 md:right-0 w-7 h-7 lg:w-10 lg:h-10 hover:bg-red-500"
+          className="absolute mt-2 mr-2 bg-black rounded-full -right-2 -top-2 md:top-0 md:right-0 w-7 h-7 lg:w-10 lg:h-10 hover:bg-red-500 "
           onClick={onClose}
         >
           <FontAwesomeIcon

@@ -80,10 +80,10 @@ function Cart() {
                   {item.name}
                 </h2>
                 <p className="text-sm md:text-md text-grey-dark">
-                  單件價格: <span className="text-black">NT$ {item.price}</span>
+                  單件價格: NT$ {item.price}
                 </p>
                 <p className="text-sm md:text-md text-grey-dark">
-                  數量: <span className="text-black">{item.quantity}</span>
+                  數量: {item.quantity}
                 </p>
                 <p className="text-sm md:text-md text-grey-dark">
                   小計:

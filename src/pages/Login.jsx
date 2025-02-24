@@ -89,7 +89,7 @@ function Login() {
             前往購物
           </button>
           <button
-            className="px-5 py-2 ml-3 text-sm text-black transition duration-300 ease-in-out border border-black rounded md:text-md lg:text-lg hover:bg-black hover:text-white"
+            className="px-5 py-2 ml-3 text-sm transition duration-300 ease-in-out border border-black rounded md:text-md lg:text-lg hover:bg-black hover:text-white"
             onClick={() => {
               localStorage.removeItem("isLoggedIn");
               window.dispatchEvent(new Event("storage"));
@@ -120,7 +120,7 @@ function Login() {
           <input
             type="text"
             placeholder="Username"
-            className="p-2"
+            className="p-2 text-black"
             value={username}
             autoComplete="current-username"
             onChange={(e) => setUsername(e.target.value)}
@@ -131,14 +131,14 @@ function Login() {
             <input
               type={isShowPassword ? "text" : "password"}
               placeholder="Password"
-              className="w-full p-2"
+              className="w-full p-2 text-black"
               value={password}
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
             />
             <FontAwesomeIcon
               icon={isShowPassword ? faEyeSlash : faEye}
-              className="absolute transform -translate-y-1/2 cursor-pointer top-1/2 right-3"
+              className="absolute text-black transform -translate-y-1/2 cursor-pointer top-1/2 right-3"
               onClick={() => setIsShowPassword(!isShowPassword)}
             />
           </div>

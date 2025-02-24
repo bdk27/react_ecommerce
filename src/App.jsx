@@ -1,5 +1,6 @@
 import AppRoutes from "@/routes/AppRoutes";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { ThemeProvider } from "@/context/ThemeContext.jsx";
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
         currency: "TWD",
       }}
     >
-      <AppRoutes></AppRoutes>
+      <ThemeProvider>
+        <AppRoutes></AppRoutes>
+      </ThemeProvider>
     </PayPalScriptProvider>
   );
 }

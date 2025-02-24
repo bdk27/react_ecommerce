@@ -52,7 +52,7 @@ function SignUp() {
             <input
               type="text"
               placeholder="Username"
-              className="p-2"
+              className="p-2 text-black"
               value={username}
               autoComplete="current-username"
               onChange={(e) => setUsername(e.target.value)}
@@ -63,14 +63,14 @@ function SignUp() {
               <input
                 type={isShowPassword ? "text" : "password"}
                 placeholder="Password"
-                className="w-full p-2"
+                className="w-full p-2 text-black"
                 value={password}
                 autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)}
               />
               <FontAwesomeIcon
                 icon={isShowPassword ? faEyeSlash : faEye}
-                className="absolute transform -translate-y-1/2 cursor-pointer top-1/2 right-3"
+                className="absolute text-black transform -translate-y-1/2 cursor-pointer top-1/2 right-3"
                 onClick={() => setIsShowPassword(!isShowPassword)}
               />
             </div>
