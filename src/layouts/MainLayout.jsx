@@ -13,7 +13,7 @@ function MainLayout() {
       <Navbar />
       <div className="container mx-auto">
         <HomeBanner />
-        <div className="items-start justify-between gap-5 my-10 md:flex">
+        <div className="items-start justify-between gap-5 mt-10 mb-20 md:flex">
           {!isCartPage && (
             <div className="hidden lg:block lg:w-1/4">
               <Products />
