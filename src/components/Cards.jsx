@@ -1,12 +1,15 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "@/data/productSlice.js";
 import Modal from "@/components/Modal.jsx";
 
 function Cards({ category }) {
-  const products = useSelector((state) => state.product.products[category]);
+  const dispatch = useDispatch();
+  const { products, loading, error } = useSelector((state) => state.product);
   const [toogleModal, setToogleModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [sortOrder, setSortOrder] = useState("");
+
   const categoryMapping = {
     TShirts: "T 恤",
     Polos: "POLO衫",
@@ -20,15 +23,28 @@ function Cards({ category }) {
   };
   const displayCategory = categoryMapping[category] || category;
 
-  if (!products) {
+  useEffect(() => {
+    console.log("Dispatching fetchProducts...");
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  console.log("Store products:", products);
+
+  // 取得指定分類的產品陣列
+  const categoryProducts = products && products[category];
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!categoryProducts || categoryProducts.length === 0) {
     return <p>找不到對應的產品</p>;
   }
 
+  // 依據排序狀態排序產品
   const sortedProducts = sortOrder
-    ? [...products].sort((a, b) =>
+    ? [...categoryProducts].sort((a, b) =>
         sortOrder === "desc" ? b.price - a.price : a.price - b.price
       )
-    : products;
+    : categoryProducts;
 
   function handleProductClick(product) {
     setSelectedProduct(product);
@@ -76,7 +92,6 @@ function Cards({ category }) {
                   loading="lazy"
                 />
               </div>
-
               <div>
                 <h3 className="py-1 text-sm font-bold">{product.name}</h3>
                 <p className="text-sm">NT$ {product.price}</p>
