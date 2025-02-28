@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import products_image from "@/assets/images/products_image.jpg";
+import products_image2 from "@/assets/images/products_image2.jpg";
 
 function Products() {
   const categories = useSelector((state) => state.category.categories);
@@ -39,11 +40,29 @@ function Products() {
         </ul>
       </div>
 
-      <div className="mt-3">
-        <img src={products_image} alt="products_image" className="rounded-lg" />
-        <p className="text-sm text-grey-dark font-playfair">
-          Origins SPRING SUMMER 2025
-        </p>
+      <div className="flex flex-col mt-3 space-y-3">
+        <div>
+          <img
+            src={products_image}
+            alt="products_image"
+            className="rounded-lg"
+            loading="lazy"
+          />
+          <p className="text-sm text-grey-dark font-playfair">
+            Origins SPRING SUMMER 2025
+          </p>
+        </div>
+        <div>
+          <img
+            src={products_image2}
+            alt="products_image2"
+            className="rounded-lg"
+            loading="lazy"
+          />
+          <p className="text-sm text-grey-dark font-playfair">
+            SPECIAL COLLECTIONS
+          </p>
+        </div>
       </div>
     </>
   );

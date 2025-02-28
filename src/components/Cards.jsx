@@ -14,7 +14,7 @@ function Cards({ category }) {
     TShirts: "T 恤",
     Polos: "POLO衫",
     Jackets: "外套夾克",
-    Knitwear: "針織衫/毛衣",
+    Knitwear: "針織衫|毛衣",
     Shirts: "襯衫",
     Shorts: "短褲",
     Jeans: "牛仔褲",
@@ -63,7 +63,9 @@ function Cards({ category }) {
   return (
     <>
       <div className="flex items-center justify-between">
-        <h1 className="mb-3 text-2xl font-bold">{displayCategory}</h1>
+        <h1 className="mb-3 text-2xl font-bold">
+          {displayCategory} / <span className="font-playfair">{category}</span>
+        </h1>
         <select
           className="rounded outline-none cursor-pointer bg-grey-light"
           value={sortOrder}
