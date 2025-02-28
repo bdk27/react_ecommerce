@@ -46,6 +46,9 @@ function Footer() {
   return (
     <footer className="w-full mt-auto">
       <div className="container mx-auto border-t">
+        <h1 className="mt-3 text-4xl font-bold text-center font-playfair">
+          AVELA
+        </h1>
         <ul className="flex flex-wrap items-start justify-between py-5">
           {footerList.map((item) => (
             <li key={item.name}>

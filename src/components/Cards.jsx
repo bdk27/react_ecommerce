@@ -1,20 +1,20 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "@/data/productSlice.js";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import Modal from "@/components/Modal.jsx";
 
 function Cards({ category }) {
-  const dispatch = useDispatch();
+  // 從 Redux store 中取得產品資料（資料應由 App.jsx 一次性抓取好）
   const { products, loading, error } = useSelector((state) => state.product);
-  const [toogleModal, setToogleModal] = useState(false);
+  const [toggleModal, setToggleModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [sortOrder, setSortOrder] = useState("");
 
+  // 使用你自己的分類對應表，這裡可以做調整
   const categoryMapping = {
     TShirts: "T 恤",
     Polos: "POLO衫",
     Jackets: "外套夾克",
-    Knitwear: "針織衫|毛衣",
+    Knitwear: "針織衫/毛衣",
     Shirts: "襯衫",
     Shorts: "短褲",
     Jeans: "牛仔褲",
@@ -22,13 +22,6 @@ function Cards({ category }) {
     Suits: "西裝外套",
   };
   const displayCategory = categoryMapping[category] || category;
-
-  useEffect(() => {
-    console.log("Dispatching fetchProducts...");
-    dispatch(fetchProducts());
-  }, [dispatch]);
-
-  console.log("Store products:", products);
 
   // 取得指定分類的產品陣列
   const categoryProducts = products && products[category];
@@ -48,11 +41,11 @@ function Cards({ category }) {
 
   function handleProductClick(product) {
     setSelectedProduct(product);
-    setToogleModal(true);
+    setToggleModal(true);
   }
 
   function handleCloseModal() {
-    setToogleModal(false);
+    setToggleModal(false);
     setSelectedProduct(null);
   }
 
@@ -63,9 +56,7 @@ function Cards({ category }) {
   return (
     <>
       <div className="flex items-center justify-between">
-        <h1 className="mb-3 text-2xl font-bold">
-          {displayCategory} / <span className="font-playfair">{category}</span>
-        </h1>
+        <h1 className="mb-3 text-2xl font-bold">{displayCategory}</h1>
         <select
           className="rounded outline-none cursor-pointer bg-grey-light"
           value={sortOrder}
@@ -103,7 +94,7 @@ function Cards({ category }) {
         ))}
       </ul>
 
-      {toogleModal && selectedProduct && (
+      {toggleModal && selectedProduct && (
         <Modal product={selectedProduct} onClose={handleCloseModal} />
       )}
     </>

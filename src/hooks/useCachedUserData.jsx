@@ -1,32 +1,44 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+
+// 全域快取物件，key 為 URL，value 為回傳的資料
+const globalCache = {};
 
 function useCachedUserData(url) {
-  const cacheRef = useRef(null);
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(globalCache[url] || null);
+  const [loading, setLoading] = useState(!globalCache[url]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchUser() {
-      // 若 cache 已有資料，就直接設定資料
-      if (cacheRef.current) {
-        setData(cacheRef.current);
-        setLoading(false);
-        return;
-      }
+    let isMounted = true;
+    // 如果全域快取中已有資料，就直接使用，不再發送請求
+    if (globalCache[url]) {
+      setData(globalCache[url]);
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
+
+    async function fetchData() {
       try {
-        // 沒有 cache 的話，執行 fetch
-        const res = await fetch(url);
-        const data = await res.json();
-        cacheRef.current = data;
-        setData(data);
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        setLoading(false);
+        const data = await fetch(url);
+        const res = await data.json();
+        globalCache[url] = res;
+        if (isMounted) {
+          setData(res);
+          setLoading(false);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err);
+          setLoading(false);
+        }
       }
     }
-    fetchUser();
+    fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [url]);
 
   return { data, loading, error };

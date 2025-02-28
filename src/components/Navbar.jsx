@@ -39,7 +39,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="flex items-center justify-between w-full px-5 py-3 rounded shadow-md lg:gap-5">
+      <div className="flex items-center justify-between w-full px-5 py-3 bg-white rounded shadow-md lg:gap-5">
         {/* 手機版 */}
         <div className="flex items-center justify-center gap-3 lg:hidden">
           <FontAwesomeIcon
