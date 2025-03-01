@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar.jsx";
 import HomeBanner from "@/components/HomeBanner.jsx";
 import Products from "@/components/Products.jsx";
+import Introduction from "@/components/Introduction";
 import Footer from "@/components/Footer.jsx";
 
 function MainLayout() {
@@ -21,6 +22,7 @@ function MainLayout() {
           )}
           <div className={`w-full ${!isCartPage ? "lg:w-3/4" : ""}`}>
             <Outlet />
+            <Introduction />
           </div>
         </div>
       </div>
