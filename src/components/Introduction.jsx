@@ -13,8 +13,12 @@ function Introduction() {
         ))}
       </div>
       <div className="w-full mx-auto mt-5 text-center text-md md:text-lg lg:text-xl text-grey-dark">
-        <p>AVELA創立之初的願景是為人們生產時尚、優質、能改善生活品質的服裝</p>
-        <p>看看我們如何努力為世界各地的每個人帶來精美、精心製作的時尚</p>
+        <p className="tracking-wide">
+          AVELA創立之初的願景是為人們生產時尚、優質、能改善生活品質的服裝
+        </p>
+        <p className="tracking-wide">
+          看看我們如何努力為世界各地的每個人帶來精美、精心製作的時尚
+        </p>
       </div>
     </>
   );

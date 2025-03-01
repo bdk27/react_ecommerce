@@ -9,24 +9,21 @@ import {
   faXmark,
   faToggleOff,
   faToggleOn,
-  faMoon,
-  faSun,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "@/context/ThemeContext.jsx";
 
 function Navbar() {
-  const [openSubList, setOpenSubList] = useState(false);
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const categories = useSelector((state) => state.category.categories);
   const cartItems = useSelector((state) => state.cart.items);
 
+  const [openSubList, setOpenSubList] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
   useEffect(() => {
-    if (openSubList) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = openSubList ? "hidden" : "auto";
   }, [openSubList]);
 
   function goToPage(link) {
@@ -35,6 +32,13 @@ function Navbar() {
   }
   function handleNavigation(path) {
     navigate(path);
+  }
+  function handleSearch() {
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery("");
+      setOpenSubList(false);
+    }
   }
 
   return (
@@ -61,6 +65,20 @@ function Navbar() {
         >
           AVELA
         </h1>
+        <div className="relative hidden md:block">
+          <input
+            type="text"
+            placeholder="搜尋名稱"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="p-1 rounded outline-none bg-grey-light w-[400px]"
+          />
+          <FontAwesomeIcon
+            icon={faMagnifyingGlass}
+            onClick={handleSearch}
+            className="absolute cursor-pointer right-2 top-2"
+          />
+        </div>
         <ul className="flex items-center justify-center gap-5">
           <li className="relative">
             <FontAwesomeIcon
@@ -98,6 +116,20 @@ function Navbar() {
           ${openSubList ? "h-screen" : "h-0"}
         `}
       >
+        <div className="relative mt-3">
+          <input
+            type="text"
+            placeholder="搜尋名稱"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full p-1 border-b outline-none bg-grey-light"
+          />
+          <FontAwesomeIcon
+            icon={faMagnifyingGlass}
+            onClick={handleSearch}
+            className="absolute cursor-pointer right-2 top-2"
+          />
+        </div>
         {categories.map((item) => (
           <li
             key={item.id}

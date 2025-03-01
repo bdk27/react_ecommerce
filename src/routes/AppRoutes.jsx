@@ -3,6 +3,7 @@ import MainLayout from "@/layouts/MainLayout.jsx";
 import Cart from "@/pages/Cart.jsx";
 import Login from "@/pages/Login.jsx";
 import SignUp from "@/pages/SignUp.jsx";
+import Search from "@/pages/Search.jsx";
 
 import TShirts from "@/pages/Tops/TShirts.jsx";
 import Polos from "@/pages/Tops/Polos.jsx";
@@ -34,11 +35,13 @@ function AppRoutes() {
           <Route path="products/suits" element={<Suits />} />
           <Route path="products/casual" element={<Casual />} />
           <Route path="products/shirts" element={<Shirts />} />
-          {/* 新增結帳頁面的路由 */}
+          {/* 搜尋頁面的路由 */}
+          <Route path="search" element={<Search />}></Route>
+          {/* 結帳頁面的路由 */}
           <Route path="cart" element={<Cart />} />
-          {/* 新增登入頁面的路由 */}
+          {/* 登入頁面的路由 */}
           <Route path="login" element={<Login />} />
-          {/* 新增註冊頁面的路由 */}
+          {/* 註冊頁面的路由 */}
           <Route path="signup" element={<SignUp />} />
         </Route>
         {/* 錯誤路由：重新導向回 / */}
