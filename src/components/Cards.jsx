@@ -8,8 +8,10 @@ function Cards({ category }) {
   const [toggleModal, setToggleModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [sortOrder, setSortOrder] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 12; // 每頁顯示 12 筆產品
 
-  // 使用你自己的分類對應表，這裡可以做調整
+  // 取得指定分類的產品陣列
   const categoryMapping = {
     TShirts: "T 恤",
     Polos: "POLO衫",
@@ -39,6 +41,14 @@ function Cards({ category }) {
       )
     : categoryProducts;
 
+  // 計算總頁數
+  const totalPages = Math.ceil(sortedProducts.length / pageSize);
+  // 取得目前頁的產品資料
+  const paginatedProducts = sortedProducts.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+
   function handleProductClick(product) {
     setSelectedProduct(product);
     setToggleModal(true);
@@ -51,6 +61,11 @@ function Cards({ category }) {
 
   function handleSortChange(e) {
     setSortOrder(e.target.value);
+  }
+
+  function handleSortChange(e) {
+    setSortOrder(e.target.value);
+    setCurrentPage(1); // 重置至第一頁
   }
 
   return (
@@ -71,7 +86,7 @@ function Cards({ category }) {
       </div>
 
       <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-        {sortedProducts.map((product) => (
+        {paginatedProducts.map((product) => (
           <li
             key={product.id}
             className="cursor-pointer"
@@ -93,6 +108,26 @@ function Cards({ category }) {
           </li>
         ))}
       </ul>
+
+      {/* 分頁控制：顯示數字按鈕 */}
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-2 mt-4">
+          {Array.from({ length: totalPages }, (_, i) => {
+            const page = i + 1;
+            return (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`px-3 py-1 border rounded ${
+                  currentPage === page ? "bg-black text-white" : "bg-white"
+                }`}
+              >
+                {page}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {toggleModal && selectedProduct && (
         <Modal product={selectedProduct} onClose={handleCloseModal} />
